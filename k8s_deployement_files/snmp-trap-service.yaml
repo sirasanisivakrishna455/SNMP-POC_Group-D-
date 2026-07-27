@@ -7,7 +7,12 @@ spec:
   selector:
     app: snmp-trap-service
   ports:
-    - protocol: TCP
-      port: 8085        # service port
-      targetPort: 8085  # container port
-      nodePort: 30093   # external port
+    - name: http
+      port: 8085
+      targetPort: 8085
+      protocol: TCP
+
+    - name: snmp-trap
+      port: 162
+      targetPort: 162
+      protocol: UDP

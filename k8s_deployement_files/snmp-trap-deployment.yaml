@@ -20,6 +20,9 @@ spec:
           imagePullPolicy: Always   # local image
           ports:
             - containerPort: 8085
+              protocol: TCP
+            - containerPort: 162
+              protocol: UDP
           env:
             - name: SERVER_PORT
               value: "8085"
