@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: raw-feed-service
-          image: 10.161.5.175:5000/raw-feed-service:1
+          image: 10.161.5.175:5000/raw-feed-service:2
           imagePullPolicy: Always
           ports:
             - containerPort: 8099
