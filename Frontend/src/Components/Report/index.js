@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Styles } from "../../CommonComponents/Commonstyles"
 import DataGridDemo from "../../CommonComponents/CommonTable"
 import Searchinput from "../../CommonComponents/Searchinput"
-import { userDataUrl } from "../../Endpoint/endpoint";
+import { customerPlansUrl } from "../../Endpoint/endpoint";
 
 export default function Planlist() {
     const [data, setData] = useState();
     const response = async () => {
         try {
-            const getData = await fetch(`${userDataUrl}/api/plans/fetechPlans`);
+            const getData = await fetch(`${customerPlansUrl}/api/plans/fetechPlans`);
             const APIData = await getData.json();
             if (APIData) {
                 setData(APIData)

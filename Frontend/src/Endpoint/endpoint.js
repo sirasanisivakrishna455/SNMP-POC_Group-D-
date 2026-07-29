@@ -55,6 +55,8 @@ export const eventsUrl = `http://localhost:30096`
 
 export const userDataUrl = `http://localhost:30097`
 
+export const customerPlansUrl = `http://localhost:30098`
+
 
 
 
