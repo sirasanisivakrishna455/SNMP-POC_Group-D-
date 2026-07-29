@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raw-feed-service
+  namespace: snmp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: raw-feed-service
+  template:
+    metadata:
+      labels:
+        app: raw-feed-service
+    spec:
+      containers:
+        - name: raw-feed-service
+          image: 10.161.5.175:5000/raw-feed-service:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8099
