@@ -9,7 +9,7 @@ spec:
 
   selector:
     app: snmp-microservice
-    version: blue
+    version: green
 
   ports:
     - name: http
