@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-producer-blue
+  namespace: snmp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-producer
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: kafka-producer
+        version: blue
+    spec:
+      containers:
+        - name: kafka-container
+          image: 10.161.5.175:5000/kafka-producer:10
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "10.161.5.175:9092"

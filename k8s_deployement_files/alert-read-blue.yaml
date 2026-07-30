@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-read-blue
+  namespace: snmp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alert-read
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: alert-read
+        version: blue
+    spec:
+      containers:
+        - name: alert-read-container
+          image: 10.161.5.175:5000/alert-read-service:8
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8089

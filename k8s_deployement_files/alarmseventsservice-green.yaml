@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alarmseventsservice-green
+  namespace: snmp
+  labels:
+    app: alarmseventsservice
+    version: green
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: alarmseventsservice
+      version: green
+
+  template:
+    metadata:
+      labels:
+        app: alarmseventsservice
+        version: green
+
+    spec:
+      containers:
+        - name: metricsalerts-container
+          image: 10.161.5.175:5000/alarmseventsservice:8
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8084
+
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "10.161.5.175:9092"

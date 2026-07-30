@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-kafka-service-blue
+  namespace: snmp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer-kafka-service
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: consumer-kafka-service
+        version: blue
+    spec:
+      containers:
+        - name: consumer-kafka-service
+          image: 10.161.5.175:5000/consumer-kafka-service:9
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8086
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "10.161.5.175:9092"
+  `

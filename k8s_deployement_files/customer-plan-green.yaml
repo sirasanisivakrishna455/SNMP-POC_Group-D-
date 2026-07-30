@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-plan-management-green
+  namespace: snmp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-plan-management
+      version: green
+  template:
+    metadata:
+      labels:
+        app: customer-plan-management
+        version: green
+    spec:
+      containers:
+        - name: customer-plan-management-container
+          image: 10.161.5.175:5000/customer-plan-management:3
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9096
