@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: snmp-trap-service-green
+  namespace: snmp
+  labels:
+    app: snmp-trap-service
+    version: green
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: snmp-trap-service
+      version: green
+
+  template:
+    metadata:
+      labels:
+        app: snmp-trap-service
+        version: green
+
+    spec:
+      containers:
+        - name: trapservice-container
+          image: 10.161.5.175:5000/snmp-trap-service:9
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8085
+              protocol: TCP
+
+            - containerPort: 162
+              protocol: UDP
+
+          env:
+            - name: SERVER_PORT
+              value: "8085"

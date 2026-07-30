@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: usermanagement-blue
+  namespace: snmp
+  labels:
+    app: usermanagement
+    version: blue
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: usermanagement
+      version: blue
+
+  template:
+    metadata:
+      labels:
+        app: usermanagement
+        version: blue
+
+    spec:
+      containers:
+        - name: usermanagement-container
+          image: 10.161.5.175:5000/usermanagement:3
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 9991
