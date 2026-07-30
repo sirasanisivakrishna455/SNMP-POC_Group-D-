@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snmp-microservice-blue
+  namespace: snmp
+  labels:
+    app: snmp-microservice
+    version: blue
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: snmp-microservice
+      version: blue
+
+  template:
+    metadata:
+      labels:
+        app: snmp-microservice
+        version: blue
+
+    spec:
+      containers:
+        - name: snmp-microservice
+          image: 10.161.5.175:5000/snmp-microservice:6
