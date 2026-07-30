@@ -24,4 +24,3 @@ spec:
           env:
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: "10.161.5.175:9092"
-  `
