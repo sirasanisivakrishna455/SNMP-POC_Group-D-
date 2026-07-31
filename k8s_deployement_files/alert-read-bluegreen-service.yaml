@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: alert-read
+    app: alert-read-bg
     version: blue
   ports:
     - port: 8089

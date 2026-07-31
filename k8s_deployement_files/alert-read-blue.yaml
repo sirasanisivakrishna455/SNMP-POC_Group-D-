@@ -7,12 +7,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: alert-read
+      app: alert-read-bg
       version: blue
   template:
     metadata:
       labels:
-        app: alert-read
+        app: alert-read-bg
         version: blue
     spec:
       containers:
